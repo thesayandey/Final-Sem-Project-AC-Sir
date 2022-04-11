@@ -5,17 +5,25 @@ from tkinter import ttk
 from tkinter import filedialog
 from PIL import ImageTk,Image
 
+listOfCords = []
+
+def getMousecoOrdinates(event):
+    cord = []
+    cord.append(event.x)
+    cord.append(event.y)
+    listOfCords.append(cord)
+    print(f' location of x={event.x}, location of y ={event.y}')
+    print(listOfCords)
+
 # Variable and functions corner :)
 def openFile():
     file_name = filedialog.askopenfilename(initialdir="./images", title="Select an image file")
-    image_name = Label(display_frame,text=f"Image you selected: {file_name}").pack()
-    my_image = ImageTk.PhotoImage(Image.open(file_name))
-    image_label = Label(image_frame,image=my_image).pack(padx=5, pady=5)
-    image_label.image = my_image
-    image_label.bind('<Button-1>', getMousecoOrdinates)
-
-def getMousecoOrdinates(event):
-    print("Position = ({0},{1})".format(event.x, event.y))
+    # image_name = Label(display_frame,text=f"Image you selected: {file_name}").pack()
+    img = ImageTk.PhotoImage(Image.open(file_name))
+    image_label = Label(image_frame,image=img)
+    image_label.pack(padx=5, pady=5)
+    image_label.image = img
+    image_label.bind("<Button-1>", getMousecoOrdinates)
 
 
 # creating a root window
