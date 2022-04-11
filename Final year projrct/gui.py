@@ -6,15 +6,15 @@ from tkinter import filedialog
 from PIL import ImageTk,Image
 from math import dist
 
-listOfCords = []
+listOfCoords = []
 
 def getMousecoOrdinates(event):
     cord = []
     cord.append(event.x)
     cord.append(event.y)
-    listOfCords.append(cord)
+    listOfCoords.append(cord)
     print(f' location of x={event.x}, location of y ={event.y}')
-    print(listOfCords)
+    print(listOfCoords)
 
 # Variable and functions corner :)
 def openFile():
@@ -66,7 +66,7 @@ try:
 
     #[[95, 78], [146, 143], [50, 194], [94, 232], [149, 207], [128, 71], [68, 74], [100, 152], [146, 172], [70, 175]]
 finally:
-    for a in listOfCords:
-        for b in listOfCords:
+    for a in listOfCoords:
+        for b in listOfCoords:
             print(int(dist(a,b)), end=' ')
         print()
