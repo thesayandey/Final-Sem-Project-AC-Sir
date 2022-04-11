@@ -4,6 +4,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import filedialog
 from PIL import ImageTk,Image
+from math import dist
 
 listOfCords = []
 
@@ -25,40 +26,47 @@ def openFile():
     image_label.image = img
     image_label.bind("<Button-1>", getMousecoOrdinates)
 
-
-# creating a root window
-root = Tk()
-
-
-# Giving a title 
-root.title("6th semester project AC Sir")
+try:
+    # creating a root window
+    root = Tk()
 
 
-# Setting the size of our window
-root.geometry("500x500")
+    # Giving a title 
+    root.title("6th semester project AC Sir")
 
 
-# Creating frames for buttons
-btn_frame = Frame(root)
-btn_frame.pack(side=TOP)
+    # Setting the size of our window
+    root.geometry("500x500")
 
 
-# Creating frames for displaying
-display_frame = Frame(root)
-display_frame.pack()
-
-image_frame = Frame(root,highlightbackground="black", highlightthickness=2)
-image_frame.bind('<Button-1>', getMousecoOrdinates)
-image_frame.pack()
+    # Creating frames for buttons
+    btn_frame = Frame(root)
+    btn_frame.pack(side=TOP)
 
 
-# Creating buttons
-browse_btn = Button(btn_frame, text="Browse", command=openFile)
-browse_btn.pack(side=LEFT, padx=5, pady=5)
+    # Creating frames for displaying
+    display_frame = Frame(root)
+    display_frame.pack()
 
-about_btn = Button(btn_frame, text="About")
-about_btn.pack(side=LEFT, padx=5, pady=5)
+    image_frame = Frame(root,highlightbackground="black", highlightthickness=2)
+    image_frame.bind('<Button-1>', getMousecoOrdinates)
+    image_frame.pack()
 
 
-# Mainloop
-root.mainloop()
+    # Creating buttons
+    browse_btn = Button(btn_frame, text="Browse", command=openFile)
+    browse_btn.pack(side=LEFT, padx=5, pady=5)
+
+    about_btn = Button(btn_frame, text="About")
+    about_btn.pack(side=LEFT, padx=5, pady=5)
+
+
+    # Mainloop
+    root.mainloop()
+
+    #[[95, 78], [146, 143], [50, 194], [94, 232], [149, 207], [128, 71], [68, 74], [100, 152], [146, 172], [70, 175]]
+finally:
+    for a in listOfCords:
+        for b in listOfCords:
+            print(int(dist(a,b)), end=' ')
+        print()
