@@ -5,6 +5,7 @@ from tkinter import ttk
 from tkinter import filedialog
 from PIL import ImageTk,Image
 from math import dist
+import matplotlib.pyplot as plt
 
 listOfCoords = []
 
@@ -25,6 +26,16 @@ def openFile():
     image_label.pack(padx=5, pady=5)
     image_label.image = img
     image_label.bind("<Button-1>", getMousecoOrdinates)
+
+
+def displayMST():
+    x = [] 
+    y = []
+    plt.plot(x, y)
+    plt.xlabel('x - axis')
+    plt.ylabel('y - axis')
+    plt.title('Minimum Spanning Tree')
+    plt.show()
 
 try:
     # creating a root window
@@ -59,6 +70,9 @@ try:
 
     about_btn = Button(btn_frame, text="About")
     about_btn.pack(side=LEFT, padx=5, pady=5)
+
+
+    gen_mst_btn = Button(btn_frame,text="Generate MST",command=displayMST).pack(side=LEFT, padx=5, pady=5)
 
 
     # Mainloop
